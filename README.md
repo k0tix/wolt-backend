@@ -1,3 +1,5 @@
+![Node.js CI](https://github.com/k0tix/wolt-backend/workflows/Node.js%20CI/badge.svg)
+
 # Wolt backend task
 
 Pre-assignment for Backend Summer 2020 Engineering Internship
