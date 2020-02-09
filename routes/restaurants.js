@@ -6,7 +6,7 @@ restaurantRouter.get('/search',
     contains,
     location,
     (request, response) => {
-        return response.status(200).send({ restaurants: request.restaurants });
+        return response.status(200).send({ restaurants: request.restaurants, distance: request.distance });
     }
 );
 
