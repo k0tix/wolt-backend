@@ -41,6 +41,27 @@ npm run watch
 
 And try to send requests to `/api/restaurants/search`
 
+## Brief overview of features
+
+The application currently has only one endpoint `/api/restaurants/search`
+
+Endpoint takes query strings to filter restaurants:
+
+* `q`:
+    * must be atleast 2 characters long, otherwise it returns a validation error
+    * matches restaurants that include the search term in their name, description or tags
+* `lat` and `lon`
+    * returns all restaurants if no coordinates are provided
+    * checks that the values are numeric, otherwise returns a validation error
+    * filters restaurants that are inside the distance radius (default distance is 3km and calculates distance with haversine formula by default)
+* `distance`
+    * defaults to 3 km if value is not provided or the value is not numeric
+    * changes the distance radius
+
 ## Testing
 
 Run `npm test` to run tests
+
+## CI
+
+The application uses Github Actions to run tests and then deploys it to heroku
