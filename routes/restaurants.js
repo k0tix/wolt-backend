@@ -1,8 +1,8 @@
 const restaurantRouter = require('express').Router();
-const { bindRestaurant, contains, location } = require('../utils/middleware');
+const { bindRestaurants, contains, location } = require('../utils/middlewares');
 
 restaurantRouter.get('/search',
-    bindRestaurant,
+    bindRestaurants,
     contains,
     location,
     (request, response) => {

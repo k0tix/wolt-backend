@@ -1,24 +1,4 @@
-const { restaurants } = require('../restaurants');
-
-const { search, distance } = require('./filters');
-
-const bindRestaurant = (request, response, next) => {
-    request.restaurants = restaurants;
-    next();
-};
-
-const contains = (request, response, next) => {
-    const searchTerm = request.query.q;
-
-    if (searchTerm === undefined || searchTerm.length < 2) {
-        return response.status(400).send({ error: 'Query string \'q\' must be atleast 2 characters long' });
-    }
-
-    request.restaurants = request.restaurants
-        .filter((restaurant) => search(restaurant, searchTerm));
-
-    next();
-};
+const { distance } = require('../filters');
 
 const location = (request, response, next) => {
     // Skip distance filtering if no coordinates are given
@@ -43,4 +23,4 @@ const location = (request, response, next) => {
     next();
 };
 
-module.exports = { bindRestaurant, contains, location };
+module.exports = location;
